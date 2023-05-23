@@ -1,0 +1,546 @@
+<!DOCTYPE html><html lang="fr"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Batman 1</title>
+<style>
+/* Les style CSS ici */
+@font-face{font-family:'Rajdhani'; src:url("Rajdhani-Medium.ttf");}
+@font-face{font-family:'SpaceGrotesk-bold'; src:url("SpaceGrotesk-Bold.ttf");}
+@font-face{font-family:'SpaceGrotesk'; src:url("SpaceGrotesk-Regular.ttf");}
+
+body{
+	position: absolute; /* pour que les lignes suivent l'écran */
+	width: 100vw;
+	margin: 0; /* coller la page aux contours */
+	color: #fff;
+	background: #000 url("Bathome1.png") no-repeat top center;
+	background-size: 100% auto;
+	font-family: "SpaceGrotesk";
+	font-size: 12px;
+}
+
+div{
+	position: relative; /* impacte positif sur les élements absolute */
+}
+
+img{
+	max-width: 100%; /* respecter le contenant */
+}
+
+button{
+	font-family: "Rajdhani";
+	font-size: 20px;
+}
+
+h1,h2{
+	margin: 0; /* eviter espacements */
+}
+
+h1{
+	font-family: "Rajdhani";
+	font-size: 36px;
+}
+
+h2{
+	font-family: "SpaceGrotesk-bold";
+	font-size: 12px;
+}
+
+aside{
+	position: fixed; /* hors scroll */
+	z-index: 7; /* element assez important */
+	right: calc(8.9vw - 40px); /*collé à droite*/
+	top: calc(50vh - 140px);
+}
+
+form .form_spacer, form input[type=text], form input[type=mail], form select{
+	background: none;
+	border: 0;
+	border-bottom: 1px solid #888;
+	padding: .2rem 0;
+	color: #888;
+}
+
+form input[type=text], form input[type=mail], form select{
+	width: 100%;
+}
+
+form p{
+	color: #888;
+}
+
+.lines{
+	background: #BCBBBD30;
+}
+
+.lines.l1{
+	width: calc(80vw - 8px);
+	left: calc(10vw + 4px);
+	top: 20vh;
+	height: 4px;
+}
+
+.lines.l2{
+	width: 4px;
+	left: 10vw;
+	top: 0;
+	height: 100%;
+}
+
+.lines.l3{
+	width: 4px;
+	right: 10vw;
+	top: 0;
+	height: 100%;
+}
+
+h1.underline:hover{
+	color: #FFFF00;
+	cursor: pointer;
+}
+
+.hover_yellow:hover{
+	filter: sepia(100%) hue-rotate(0deg) saturate(10);
+	cursor: pointer;
+}
+
+.in_mx20>div>img:hover{
+    transform: scale(1.1); /* zoom 10% */
+}
+
+.contact{
+	background: linear-gradient(315deg, #0A2636, #666053 100%); /*version opaque du fond*/
+	border: 1px solid;
+	border-image: linear-gradient(315deg, #19587D66, #EDDEBF66 100%) 1;
+}
+
+.bt_simple{
+	border: none; /*Pas de contour*/
+	border-radius: 0; /*Pas d'arrondi de contour*/
+	background: none;
+	font-size: 18px; /*Taille de police du bouton*/
+}
+
+.bt_gradient_w{
+	padding: 1rem 3rem; /*Espacement interne du bouton*/
+	background: linear-gradient(to right, #EDDEBF66, #89000899 100%);
+	color: #fff; /*Couleur du texte du bouton*/
+    transition: all 0.2s ease;
+}
+
+.bt_gradient_t{
+	padding: .8rem calc(1vw + 1rem); /*Espacement interne du bouton*/
+	border: 1px solid;
+	border-image: linear-gradient(315deg, #19587D, #EDDEBF 100%) 1;
+	color: #fff; /*Couleur du texte du bouton*/
+    transition: all 0.2s ease;
+}
+
+.bt_gradient_w:hover{
+	background: linear-gradient(to right, #EDDEBF99, #890008 100%); /*version opaque du fond*/
+    cursor:pointer;
+}
+.bt_gradient_t:hover{
+    background: #fff4;
+    cursor:pointer;
+}
+
+.img_add_rt{
+	left: 5rem;
+	top: -5rem;
+}
+
+.img_add_rt>img{
+	width: 9rem;
+}
+
+.imdb_fond{
+	background: linear-gradient(315deg, #19587D66, #EDDEBF66 100%);
+	box-shadow: 0 0 0 2px #fff1 inset;
+	border-top-right-radius: 9px;
+	border-bottom-right-radius: 9px;
+}
+
+.imdb_img{
+	min-width: 155px;
+	height: 230px;
+	background: url('Bathome_ba1.png');
+}
+
+.imdb_desc{
+	width: 36vw;
+	max-width: 360px;
+	padding: .8rem 1.0rem;
+}
+
+.imdb_note{
+	color: #ff0;
+}
+
+.underline{
+	text-decoration: underline;
+}
+
+.large-font{
+	font-size: 20px;
+}
+
+.medium-font{
+	font-size: 18px;
+}
+
+.xlarge-font{
+	font-size: 22px;
+}
+
+.abs{
+	position: absolute;
+}
+
+.l0{
+	left: 0;
+}
+
+.t0{
+	top: 0;
+}
+
+.flex{
+	display: flex;
+}
+
+.flexbetween{
+	justify-content: space-between;
+}
+
+.flex_center{
+	justify-content: center;
+}
+
+.tac{
+	text-align: center;
+}
+
+.tar{
+	text-align: right;
+}
+
+.justif_text{
+	text-align: justify;
+}
+
+.v_center{
+	align-items: center;
+}
+
+.lh16{
+	line-height: 1.6rem;
+}
+
+.paragraphs{
+	margin-bottom: 50px;
+}
+
+.in_mx20>div{
+	max-width: 30%;
+}
+
+
+.in_mx20>div>img{
+    transition: transform 0.2s ease;
+}
+
+.in_px1v>div{
+	padding-left: 1vw;
+	padding-right: 1vw;
+}
+
+.ma{
+	margin: auto;
+}
+
+.w100v{
+	width: 100vw;
+}
+
+.w15v{
+	width: 15vw;
+}
+
+.w35v{
+	width: 35vw;
+}
+
+.w50v{
+	width: 50vw;
+}
+
+.w60v{
+	width: 60vw;
+}
+
+.w70v{
+	width: 70vw;
+}
+
+.mr15{
+	margin-right: 1.5rem;
+}
+
+.ml25{
+	margin-left: 2.5rem;
+}
+
+.mt7v{
+	margin-top: 7vh;
+}
+
+.mt16v{
+	margin-top: 16vh;
+}
+
+.mt45v{
+	margin-top: 45vh;
+}
+
+.mt25v{
+	margin-top: 25vh;
+}
+
+.mt4{
+	margin-top: .4rem;
+}
+
+.mt8{
+	margin-top: .8rem;
+}
+
+.mt16{
+	margin-top: 1.6rem;
+}
+
+.mt30{
+	margin-top: 3rem;
+}
+
+.mt40{
+	margin-top: 4rem;
+}
+
+.mt90{
+	margin-top: 9rem;
+}
+
+.mb8{
+	margin-bottom: .8rem;
+}
+
+.mb20{
+	margin-bottom: 2rem;
+}
+
+.mx5v{
+	margin-left: 12vw;
+	margin-right: 12vw;
+}
+
+.pr9v{
+	padding-right: 9vw;
+}
+
+.pt8{
+	padding-top: .8rem;
+}
+
+.py30{
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+}
+
+.pb100{
+	padding-bottom: 10rem;
+}
+
+</style>
+</head><body class="back_body">
+
+<div class="abs lines l1"></div>
+<div class="abs lines l2"></div>
+<div class="abs lines l3"></div>
+
+<header class="mt7v">
+    <div class="flex flexbetween w70v ma">
+        <div class="ml25 hover_yellow"><img src="logohome.png" alt="icône"></div>
+        <h1 class="underline">&nbsp;HOME&nbsp;</h1>
+    </div>
+</header>
+
+<aside>
+    <div class="tac hover_yellow"><a href="#top"><img src="logo_bat_flèche.png"></a></div>
+    <div class="tac hover_yellow mt16"><img src="icon_facebook.png"></div>
+    <div class="tac hover_yellow mt16"><img src="icon_ig.png"></div>
+    <div class="tac hover_yellow mt16"><img src="icon_tw.png"></div>
+    <div class="tac hover_yellow mt16"><a href="#contact"><img src="logo_bat_flèche_2.png"></a></div>
+</aside>
+
+<section class="pb100">
+
+<p class="tac large-font mt45v">
+Au nom de ses parents assassinés, Bruce Wayne mène<br>
+une guerre éternelle contre les criminels de Gotham City.<br>
+Il est vengeur. Il est la nuit.
+</p>
+<p class="tac xlarge-font"><b>Il est Batman.</b></p>
+
+<div class="flex flex_center mt7v">
+	<div>
+		<button class="bt_simple bt_gradient_w">VOIR LE HEROS</button>
+	</div>
+	<div class="ml25">
+		<button class="bt_simple bt_gradient_w">LES ADVERSAIRES</button>
+	</div>
+</div>
+
+
+<div class="tac mt45v">
+	<img src="flèche_down_header.png" alt="icône">
+</div>
+
+<div class="mx5v mt7v">
+  <h1>BATMAN AU CINÉMA</h1>
+  <p class="large-font justif_text pr9v">
+	Le personnage de Batman est un super héros de l&apos univers de DC Comics. Il a été créé par le dessinateur Bob Kane et le scénariste Bill Finger et apparaît pour la première fois dans le comic book Detective Comics en 1939. Batman se différencie de Superman, alors héros majeur de DC, car il n&apos a aucun pouvoir. Il sera porté au cinema pour la première fois en 1943 par Lewis Wilson et bénéficiera de nombreux reboot, donnant l&apos occasion à de multiples acteurs d&apos interpréter l&apos homme chauve-souris. Voici les trois derniers :
+  </p>
+</div>
+
+<div class="flex flexbetween mx5v mt7v">
+	<div>
+		<img src="Bathome2.png"><br>Robert Pattinson<br>(2022)
+	</div>
+	<div>
+		<img src="Bathome3.png"><br>Christian Bale<br>(2006 - 2008 - 2012)
+	</div>
+	<div>
+		<img src="Bathome4.png"><br>Ben Affleck<br>20016- 2017/2020 – 2023
+	</div>
+</div>
+
+<div class="mx5v mt25v">
+	<h1>NÉMÉSIS</h1>
+	<div class="abs img_add_rt"><img src="Bathome13.png"></div>
+	<p class="large-font justif_text pr9v">
+     Batman souhaite éradiquer la criminalité de Gotham. C’est pourquoi, il affrontera la plupart du temps, des vilains sans capacités surnaturelles mais particulièrement violents ou psychopathes. Avec son introduction dans la Justice League il aura l’occasion de se mesurer à des antagonistes qui défient l’imagination et les lois de la physique. Parmi les derniers ennemis emblématiques que nous avons pu voir au cinéma, on retrouve :
+	</p>
+</div>
+
+<div class="flex flexbetween mx5v mt7v">
+  <div><img src="Bathome5.png"><br>The Riddler - Paul Dano<br>(2022)</div>
+  <div><img src="Bathome6.png"><br>Le Joker - Heath Ledger<br>(2008)</div>
+  <div><img src="Bathome7.png"><br>Darkseid - Ray Porter<br>(2022)</div>
+</div>
+
+<div class="mx5v mt25v">
+  <h1>ALLIES</h1>
+  <p class="large-font justif_text pr9v">
+	Alfred est le majordome des Wayne. A leur mort il s’occupe de l’éducation du jeune Bruce avant de l’assister dans son rôle du Batman. Ce dernier rencontrera Catwoman dès le premier numéro des aventures de l’homme chauve-souris en 1940. Tantôt ennemie tantôt alliée la jeune femme fatale fera tourner la tête de Batman à maintes reprises. Du côté de la police, Bruce pourra compter sur l’aide infaillible de James Gordon, “Jim”, qui désire lui aussi nettoyer sa ville de la criminalité qui y règne.
+  </p>
+</div>
+
+<div class="flex flexbetween mx5v mt7v">
+  <div><img src="Bathome9.png"><br>Alfred Pennyworth - Michael Cain<br>(2006 - 2008 - 2012)</div>
+  <div><img src="Bathome8.png"><br>Catwoman - Zoé Kravitz<br>(2008)</div>
+  <div><img src="Bathome10.png"><br>James Gordon<br>(2014-2019)</div>
+</div>
+
+<div class="mx5v mt16v">
+  <h1>JUSTICE LEAGUE</h1>
+  <p class="large-font justif_text pr9v">
+  Lorsque la Terre est menacée les plus grands super-héros s’allient pour la protéger. Ils doivent cependant apprendre à se faire confiance mutuellement et à faire équipe ce qui ne sera pas chose aisée. Ensemble ils forment la Justice League, les plus grands super-héros de la Terre, ceux vers qui le monde entier se tourne lorsque les menaces extraterrestres ou surnaturelles menacent son existence.
+  </p>
+</div>
+
+<div class="mt7v"><img src="Bathome11.png" class="w100v"></div>
+
+<div class="mx5v mt7v">
+	<h1>MULTIMÉDIA</h1>
+	<div class="flex flexbetween mt30 v_center">
+		<div><img src="icon_flèche_1.png"></div>
+		<div class="flex">
+			<div class="imdb_img"></div>
+			<div class="imdb_desc imdb_fond">
+				<div>ACTION, Adventure</div>
+				<div class="mt8">Batman Begins</div>
+				<div class="mt8">IMDB : <span class="imdb_note">8.2</span></div>
+				<div class="mt4">Le jeune Bruce Wayne assiste impuissant au meurtre de ses parents. Profondément traumatisé, il grandit obnubilé par un désir de vengeance. La Ligue des ombres, une secte de guerriers ninja dirigée par Ra's al Ghul, se chargera de son entraînement. De retour chez lui à Gotham, avec l'aide de son majordome Alfred Pennyworth, Bruce Wayne se lance alors dans la lutte contre le crime sous le nom de Batman.</div>
+			</div>
+		</div>
+		<div><img src="icon_flèche_2.png"></div>
+	</div>
+</div>
+
+<div class="mx5v mt16v flex flex_center">
+	<div><img src="Bathome_ba2.png"></div>
+</div>
+
+<div class="mt16v py30 contact" id="contact">
+	<form>
+		<h1 class="tac">PRENONS CONTACT</h1>
+		<div class="mt40 w50v ma"><span class="xlarge-font">ADRESSE EMAIL</span>
+			<div class="form_spacer medium-font mt16 mb8 w50v ma">ADRESSE EMAIL</div>
+			<div class="mt30 w50v ma"><span class="xlarge-font">NEWSLETTER</span>
+			<p class="medium-font">En cochant cette case vous acceptez de recevoir l’actualité concernant les aventures de Batman : <input type="checkbox"></p>
+		</div>
+
+		<div class="form_spacer medium-font mt16 mb8 w50v ma">Choisissez la fréquence à laquelle vous souhaitez recevoir votre newsletter</div>
+		<div class="form_spacer medium-font mt16 mb8 w50v ma">Souhaitez-vous recevoir des news</div>
+		<div class="ma pt8">
+			<div class="flex flex_center in_px1v">
+				<div><button class="bt_simple bt_gradient_t">Des films</button></div>
+				<div><button class="bt_simple bt_gradient_t">Des comics</button></div>
+				<div><button class="bt_simple bt_gradient_t">De tout</button></div>
+			</div>
+		</div>
+		
+		<div class="mt30 w50v ma">
+			<span class="xlarge-font">MESSAGE</span>
+			<div class="form_spacer medium-font mt16 mb8 w50v ma">Laissez un commentaire</div>
+		</div>
+		
+		<div class="tac">
+			<input class="bt_simple bt_gradient_w" type="submit" value="CONFIRMER">
+		</div>
+	</form>
+</div>
+
+<div class="w60v ma mt90">
+	<img src="icon_guillemets_1.png">
+	<div class="ma tac w35v medium-font">
+		La seule façon raisonnable de vivre en ce bas monde, c'est en dehors des règles.
+	</div>
+	<div class="w15v lh16 ma tac mt16 lh2">
+		The Dark Knight : Le Chevalier Noir - Le Joker à Batman (2008)
+	</div>
+	<div class="tar"><img src="icon_guillemets_2.png"></div>
+</div>
+
+
+<div class="w60v ma tac mt25v">
+    <div class="ml25 hover_yellow"> 
+		<img src="icon_WB.png"> Ce projet respecte l’univers cinématographique des films Batman récents. Version Nolan & Snyder & Reeves
+	</div>
+</div>	
+
+
+
+<div class="flex flex_center v_center mt30 ma">
+    <div><img src="logo_sayna_white.png"></div>
+    <div class="mr15"><img src="icon_x.png"></div>
+    <div class="mr15"><img src="icon_DC.png"></div>
+    <div class="ml25 hover_yellow"><img src="icon_facebook.png"></div>
+    <div class="ml25 hover_yellow"><img src="icon_ig.png"></div>
+    <div class="ml25 hover_yellow"><img src="icon_tw.png"></div>
+</div>
+
+</section>
+
+</body></html>
